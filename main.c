@@ -8,8 +8,8 @@
 
 #include <stdio.h>
 #include <time.h>
-#include "Round.h"
-#include "Encry.h"
+#include "./Encry/Round.h"
+#include "./Encry/Encry.h"
 
 int main(void){
 	//clock_t begin =clock();
