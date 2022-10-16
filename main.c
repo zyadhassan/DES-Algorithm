@@ -15,9 +15,11 @@ int main(void){
 	//clock_t begin =clock();
 	printf("Encryption: \n");
 	uint64 data1 = Encrypt(0x123456789ABCDEF);
-	//printf("%p\n", data1);
+	printf("%llx\n", data1);
 	printf("\nDecryption: \n");
 	data1 = Decrypt(data1);
+	printf("%llx\n", data1);
+
 	//clock_t end = clock();
 	//double time =(double)(end-begin)/CLOCKS_PER_SEC;
 	//printf("%p\n", data1);
