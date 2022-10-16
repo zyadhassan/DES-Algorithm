@@ -1,9 +1,3 @@
-/*
- * main.c
- *
- *  Created on: Oct 15, 2022
- *      Author: user
- */
 
 
 #include <stdio.h>
