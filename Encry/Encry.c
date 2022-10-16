@@ -161,15 +161,15 @@ inline uint64 Inverse_Permutation(uint64 data){
 inline uint64 Encrypt(uint64 data){
 	uint64 plain;
 	plain = Initial_Permutation(data);
-	printf("Initial Permutation: %p\n", plain);
+	//printf("Initial Permutation: %p\n", plain);
 	for(char i = 0; i < 16 ; i++){
 		plain = Round(plain, i+1);
-		printf("Round number %d data: %p\n",i,plain);
+		//printf("Round number %d data: %p\n",i,plain);
 	}
 
 	swap(&plain);
 	plain = Inverse_Permutation(plain);
-	printf("Inverse Permutation: %p\n", plain);
+	//printf("Inverse Permutation: %p\n", plain);
 	return plain;
 }
 
@@ -186,14 +186,14 @@ inline void swap(uint64 *ptr_plain){
 inline uint64 Decrypt(uint64 data){
 	uint64 plain;
 	plain = Initial_Permutation(data);
-	printf("Initial Permutation: %p\n", plain);
+	//printf("Initial Permutation: %p\n", plain);
 	for(char i = 16; i > 0 ; i--){
 		plain = Round(plain, i);
-		printf("Round number %d data: %p\n",i,plain);
+		//printf("Round number %d data: %p\n",i,plain);
 	}
 
 	swap(&plain);
 	plain = Inverse_Permutation(plain);
-	printf("Inverse Permutation: %p\n", plain);
+	//printf("Inverse Permutation: %p\n", plain);
 	return plain;
 }
