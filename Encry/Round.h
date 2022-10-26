@@ -115,6 +115,6 @@ extern inline uint64 Expansion(uint32 data);
 extern inline uint64 XOR(uint64 right_data,uint64 key);
 extern inline uint32 S_Box(uint64 data);
 extern inline uint32 permutation(uint32 data);
-extern inline uint64 Round(uint64 data , uint8 roundNum);
+extern inline uint64 Round(uint64 data , uint64 key_in);
 
 #endif

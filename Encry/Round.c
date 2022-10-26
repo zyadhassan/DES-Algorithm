@@ -199,22 +199,14 @@ inline uint32 permutation(uint32 data){
 		return (temp.Data>>32);
 
 }
-inline uint64 Round(uint64 data , uint8 roundNum){
+inline uint64 Round(uint64 data ,uint64 key_in){
 	uint32 left,right;
 	uint32 * ptr =(uint32*)&data;
 	right=*ptr;
 	ptr++;
 	left=*ptr;
 
-
-
-
-	/*
-	 *
-	 * GET KEY depend on roundNum
-	 *
-	 */
-	uint64 key=(keys[roundNum-1])<<16;
+	uint64 key = key_in;
 
 
 

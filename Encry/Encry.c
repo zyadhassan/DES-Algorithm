@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "Round.h"
 #include "Encry.h"
-
+uint64 keys[32];
 inline uint64 Initial_Permutation(uint64 data){
 	data_64bit temp;
 	data_64bit original_data;
@@ -158,13 +158,15 @@ inline uint64 Inverse_Permutation(uint64 data){
 	return temp.Data;
 }
 
-inline uint64 Encrypt(uint64 data){
+inline uint64 Encrypt(uint64 data , uint64 key_origin){
 	uint64 plain;
+	get_keys(key_origin,keys);
+
 	plain = Initial_Permutation(data);
 	//printf("Initial Permutation: %llx\n", plain);
 	for(char i = 0; i < 16 ; i++){
-		plain = Round(plain, i+1);
-		//printf("Round number %d data: %llx\n",i,plain);
+		plain = Round(plain,keys[i]);
+		//printf("Round number %d data: %llx\n",i,keys[i]);
 	}
 
 	swap(&plain);
@@ -183,12 +185,14 @@ inline void swap(uint64 *ptr_plain){
 	*ptr_left_data = temp;
 }
 
-inline uint64 Decrypt(uint64 data){
+inline uint64 Decrypt(uint64 data, uint64 key_origin){
 	uint64 plain;
 	plain = Initial_Permutation(data);
+	 get_keys(key_origin,keys);
 	//printf("Initial Permutation: %llx\n", plain);
-	for(char i = 16; i > 0 ; i--){
-		plain = Round(plain, i);
+	for(char i = 15; i >= 0 ; i--){
+		plain = Round(plain,keys[i]);
+			//	printf("Round number %d data: %llx\n",i,keys[i]);
 		//printf("Round number %d data: %llx\n",i,plain);
 	}
 
